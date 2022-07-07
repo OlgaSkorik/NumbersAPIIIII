@@ -1,13 +1,17 @@
 POST http://localhost:8080/user
+Authorisation: Bearer_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6InRlc3QifQ.TCLkDnac7iDcAT_brMVSFg6wJazeT0ZqTYanM4R7ZQo
 Content-Type: application/json
 
 {
   "name": "Test",
-  "username": "test2",
+  "username": "test1",
   "password": "test",
-  "role": [
-    {"typeOfRole": "USER"}
-  ]
+  "roleList": [
+  {
+    "typeOfRole": "user"
+  }
+  ],
+  "status": "active"
 }
 
 ###
@@ -21,3 +25,5 @@ Content-Type: application/json
   "fact": "fact"
 }
 ###
+GET http://localhost:8080/user
+Authorisation: Bearer_eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJwYXNzd29yZCI6InRlc3QifQ.TCLkDnac7iDcAT_brMVSFg6wJazeT0ZqTYanM4R7ZQo
