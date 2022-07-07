@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -28,4 +29,10 @@ public class User {
     @NotBlank
     @NotEmpty
     private String password;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Role> roleList;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }
