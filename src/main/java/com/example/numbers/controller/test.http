@@ -1,0 +1,19 @@
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "name": "Test",
+  "username": "test2",
+  "password": "test"
+}
+
+###
+
+POST http://localhost:8080/number
+Content-Type: application/json
+
+{
+  "triviaNumber": 22,
+  "fact": "fact"
+}
+###
