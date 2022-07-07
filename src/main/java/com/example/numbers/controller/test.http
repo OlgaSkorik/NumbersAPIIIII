@@ -4,7 +4,10 @@ Content-Type: application/json
 {
   "name": "Test",
   "username": "test2",
-  "password": "test"
+  "password": "test",
+  "role": [
+    {"typeOfRole": "USER"}
+  ]
 }
 
 ###

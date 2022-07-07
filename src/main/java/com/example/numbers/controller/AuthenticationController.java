@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +40,10 @@ public class AuthenticationController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
         if (userService.findByUsername(username).isPresent()) {
             User user = userService.findByUsername(username).get();
+
+            if (user == null) {
+                throw new UsernameNotFoundException("User with username: " + username + " not found");
+            }
 
             String token = jwtTokenProvider.generateToken(username, user.getRoleList());
 
